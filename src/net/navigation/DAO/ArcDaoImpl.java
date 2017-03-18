@@ -40,7 +40,6 @@ public class ArcDaoImpl implements ArcDao {
     public void removeArc(int id){
         Session session = this.sessionFactory.getCurrentSession();
         Arc arc = session.load(Arc.class, new Integer(id));
-
         if(arc!=null){
             session.delete(arc);
         }

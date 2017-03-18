@@ -47,6 +47,10 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
+    <bean id="arcService" class="net.navigation.Services.ArcServiceImpl">
+        <property name="arcDao" ref="ArcDao"/>
+    </bean>
+
 
     <context:component-scan base-package="net.navigation"/>
 
