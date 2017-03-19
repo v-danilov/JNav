@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%--
   Created by IntelliJ IDEA.
@@ -14,28 +14,28 @@
 <head>
 <h1>Find route</h1>
 
-<c:url var="findAction" value="/arcs/build"/>
+<c:url var="findAction" value="/main/find"/>
 
-<form:form action="${findAction}" commandName="commnd??">
+<form:form action="${findAction}" commandName="arc">
     <table>
     <tr>
     <td>
-    <form:label path="nodeFrom">
+    <form:label path="start_node">
         <spring:message text="From"/>
     </form:label>
     </td>
     <td>
-    <form:input path="nodeFrom"/>
+    <form:input path="start_node"/>
     </td>
     </tr>
     <tr>
     <td>
-    <form:label path="nodeTo">
-        <spring:message text="NodeTo"/>
+    <form:label path="end_node">
+        <spring:message text="To"/>
     </form:label>
     </td>
     <td>
-    <form:input path="nodeTo"/>
+    <form:input path="end_node"/>
     </td>
     </tr>
     <tr>

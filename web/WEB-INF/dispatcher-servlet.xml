@@ -51,6 +51,12 @@
         <property name="arcDao" ref="ArcDao"/>
     </bean>
 
+    <bean id="nodeService" class="net.navigation.Services.NodeServiceImpl">
+        <property name="nodeDao" ref="NodeDao"/>
+    </bean>
+
+
+
 
     <context:component-scan base-package="net.navigation"/>
 
