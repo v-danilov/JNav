@@ -45,7 +45,6 @@ public class MainController {
     @RequestMapping(value = "main", method = RequestMethod.GET)
     public String enter(Model model){
         model.addAttribute("arc", new Arc());
-        //create_graph();
         return "main";
     }
 
@@ -89,7 +88,7 @@ public class MainController {
             //Graph = this.arcService.createGraph();
             System.out.println("Graph created");
         } catch (Exception e) {
-            System.err.println("Error. Build graph faild.\n" + e.getStackTrace() + e.getMessage());
+            System.err.println("Error. Build graph faild.\n" + e.getStackTrace() + "\nMessage: " + e.getMessage() + "\n");
         }
 
     }

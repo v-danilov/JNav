@@ -7,10 +7,11 @@ import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.hibernate.*;
 
 import org.slf4j.Logger;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public class ArcDaoImpl implements ArcDao {
 
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(ArcDaoImpl.class);

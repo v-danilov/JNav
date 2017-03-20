@@ -1,22 +1,19 @@
 package net.navigation.DAO;
 
-
-
-
 import net.navigation.Models.Node;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public class NodeDaoImpl implements NodeDao {
 
-    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(NodeDaoImpl.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(NodeDaoImpl.class);
     private SessionFactory sessionFactory;
-
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

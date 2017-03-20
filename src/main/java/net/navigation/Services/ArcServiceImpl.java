@@ -5,11 +5,13 @@ import net.navigation.DAO.ArcDao;
 import net.navigation.DAO.NodeDao;
 import net.navigation.DAO.NodeDaoImpl;
 import net.navigation.Models.*;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ArcServiceImpl implements ArcService {
 
     private ArcDao arcDao;
@@ -39,7 +41,7 @@ public class ArcServiceImpl implements ArcService {
     @Override
     @Transactional
     public List<Arc> listArcs(){return this.arcDao.listArcs();}
-    }
+}
 
 
 

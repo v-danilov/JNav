@@ -1,10 +1,13 @@
 package net.navigation.Services;
 import net.navigation.DAO.NodeDao;
 import net.navigation.Models.Node;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
+@Service
 public class NodeServiceImpl implements NodeService {
 
     private NodeDao nodeDao;
