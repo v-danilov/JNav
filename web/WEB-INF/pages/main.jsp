@@ -15,7 +15,7 @@
 <title>Main</title>
 </head>
 <body>
-<c:url var="findAction" value="/main.form"/>
+<c:url var="findAction" value="/main/find.form"/>
 
 <form:form action="${findAction}" commandName="arc">
     <table>

@@ -36,6 +36,8 @@ public class MainController {
         this.arcService = arcService;
     }
 
+    @Autowired(required = true)
+    @Qualifier(value = "nodeService")
     public void setNodeService(NodeService nodeService) {
         this.nodeService = nodeService;
     }
@@ -43,48 +45,54 @@ public class MainController {
     @RequestMapping(value = "main", method = RequestMethod.GET)
     public String enter(Model model){
         model.addAttribute("arc", new Arc());
+        //create_graph();
         return "main";
     }
 
-   /* @PostConstruct
-    public void createGraph(Model model) {
+    @PostConstruct
+    public void create_graph() {
         System.out.println("Build action started.");
-        nodes = new ArrayList<Vertex>();
-        arcs = new ArrayList<Edge>();
-        List<Node> nodeList = this.nodeService.listNodes();
-        for (Node n : nodeList) {
-            Vertex newVertex = new Vertex(Integer.toString(n.getId_node()), Integer.toString(n.getNode_number()));
-            nodes.add(newVertex);
-        }
-
-        List<Arc> arcList = this.arcService.listArcs();
-        int source_index = 0;
-        int destination_index = 0;
-
-        for (Arc a : arcList) {
-
-            //Ищем положение Node в листе в соответсвии с данными дуги
-            for (int i = 0; i < nodes.size(); i++) {
-                if (nodes.get(i).getId().equals(a.getStart_node())) {
-                    source_index = i;
-                }
-                if (nodes.get(i).getId().equals(a.getEnd_node())) {
-                    destination_index = i;
-                }
-
+        try {
+            nodes = new ArrayList<Vertex>();
+            arcs = new ArrayList<Edge>();
+            List<Node> nodeList = this.nodeService.listNodes(); //Error
+            for (Node n : nodeList) {
+                Vertex newVertex = new Vertex(Integer.toString(n.getId_node()), Integer.toString(n.getNode_number()));
+                nodes.add(newVertex);
             }
 
-            Edge newEdge = new Edge(Integer.toString(a.getId_arc()), nodes.get(source_index), nodes.get(destination_index), a.getWeight());
-            arcs.add(newEdge);
+            List<Arc> arcList = this.arcService.listArcs();
+            int source_index = 0;
+            int destination_index = 0;
+
+            for (Arc a : arcList) {
+
+                //Ищем положение Node в листе в соответсвии с данными дуги
+                for (int i = 0; i < nodes.size(); i++) {
+                    if (nodes.get(i).getId().equals(a.getStart_node())) {
+                        source_index = i;
+                    }
+                    if (nodes.get(i).getId().equals(a.getEnd_node())) {
+                        destination_index = i;
+                    }
+
+                }
+
+                Edge newEdge = new Edge(Integer.toString(a.getId_arc()), nodes.get(source_index), nodes.get(destination_index), a.getWeight());
+                arcs.add(newEdge);
+            }
+
+            graph = new Graph(nodes, arcs);
+            dijkstraAlgorithm = new DijkstraAlgorithm(graph);
+
+
+            //Graph = this.arcService.createGraph();
+            System.out.println("Graph created");
+        } catch (Exception e) {
+            System.err.println("Error. Build graph faild.\n" + e.getStackTrace() + e.getMessage());
         }
 
-        graph = new Graph(nodes,arcs);
-        dijkstraAlgorithm = new DijkstraAlgorithm(graph);
-
-
-        //Graph = this.arcService.createGraph();
-        System.out.println("Graph created");
-    }*/
+    }
 
     @RequestMapping(value = "/main/find", method = RequestMethod.POST)
     public String findRoute(@ModelAttribute("arc") Arc arc) {
