@@ -35,7 +35,7 @@ public class NodeDaoImpl implements NodeDao {
     @Override
     public void removeNode(int id){
         Session session = this.sessionFactory.getCurrentSession();
-        Node node = session.load(Node.class, new Integer(id));
+        Node node = (Node) session.load(Node.class, new Integer(id));
 
         if(node!=null){
             session.delete(node);
@@ -46,7 +46,7 @@ public class NodeDaoImpl implements NodeDao {
     @Override
     public List<Node> listNodes(){
         Session session = this.sessionFactory.getCurrentSession();
-        List<Node> nodeList = session.createQuery("from Node").list();
+        List<Node> nodeList =(List<Node>) session.createQuery("from Node ").list();
 
         for(Node node: nodeList){
             logger.info("Node list: " + node);
@@ -58,17 +58,19 @@ public class NodeDaoImpl implements NodeDao {
     @Override
     public Node findNodeById(int id){
         Session session =this.sessionFactory.getCurrentSession();
-        Node node = session.load(Node.class, new Integer(id));
+        Node node = (Node) session.load(Node.class, new Integer(id));
         logger.info("Node successfully loaded. Node details: " + node);
         return node;
     }
 
     @Override
-    public Node findNodeByNodeNumber(int node_number, int floor_id){
+    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id){
         Session session =this.sessionFactory.getCurrentSession();
-        List<Node> result = session.createQuery("from Node n where n.node_number= :node_number AND n.floor_id= :floor_id")
+
+        List<Node> result = session.createQuery("from Node n where n.node_number=:node_number and n.floor_id = (select id_floor from Floor where floor_number = :floor_number and housing_id = :housing_id)")
                 .setParameter("node_number",node_number)
-                .setParameter("floor_id",floor_id).list();
+                .setParameter("floor_number",floor_number)
+                .setParameter("housing_id", housing_id).list();
         Node node = result.get(0);
         if(result.size() > 1){
             logger.info("Warning! To many values: " + result.size());

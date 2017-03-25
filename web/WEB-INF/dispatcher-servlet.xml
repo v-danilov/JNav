@@ -5,6 +5,8 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:component-scan base-package="net.navigation"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
@@ -12,7 +14,7 @@
 
     <!-- Database Information -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
                   value="jdbc:mysql://localhost:3306/NAVIGATION"/>
         <property name="username" value="root"/>
@@ -27,6 +29,8 @@
             <list>
                 <value>net.navigation.Models.Arc</value>
                 <value>net.navigation.Models.Node</value>
+                <value>net.navigation.Models.Floor</value>
+                <value>net.navigation.Models.Housing</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -39,31 +43,45 @@
     </bean>
 
     <!--Dao and Service beans-->
-    <bean id="ArcDao" class="net.navigation.DAO.ArcDaoImpl">
+    <bean id="arcDao" class="net.navigation.DAO.ArcDaoImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
-    <bean id="NodeDao" class="net.navigation.DAO.NodeDaoImpl">
+    <bean id="nodeDao" class="net.navigation.DAO.NodeDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="floorDao" class="net.navigation.DAO.FloorDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="housingDao" class="net.navigation.DAO.HousingDaoImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
     <bean id="arcService" class="net.navigation.Services.ArcServiceImpl">
-        <property name="arcDao" ref="ArcDao"/>
+        <property name="arcDao" ref="arcDao"/>
     </bean>
 
     <bean id="nodeService" class="net.navigation.Services.NodeServiceImpl">
-        <property name="nodeDao" ref="NodeDao"/>
+        <property name="nodeDao" ref="nodeDao"/>
     </bean>
 
+    <bean id="floorService" class="net.navigation.Services.FloorServiceImpl">
+        <property name="floorDao" ref="floorDao"/>
+    </bean>
 
-
-
-    <context:component-scan base-package="net.navigation"/>
+    <bean id="housingService" class="net.navigation.Services.HousingServiceImpl">
+        <property name="housingDao" ref="housingDao"/>
+    </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
+
+
+
 
 </beans>

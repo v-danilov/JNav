@@ -15,9 +15,9 @@
 <title>Main</title>
 </head>
 <body>
-<c:url var="findAction" value="/main/find.form"/>
+<c:url var="findAction" value="/main/find"/>
 
-<form:form action="${findAction}" commandName="arc">
+<%--<form:form action="${findAction}" modelAttribute="arc">
     <table>
     <tr>
     <td>
@@ -45,6 +45,37 @@
                value="<spring:message text="Find route"/>"/>
     </td>
     </tr>
+    </table>
+</form:form>--%>
+
+<form:form action="${findAction}" method="post" modelAttribute="formData">
+    <table>
+        <tr>
+            <td>
+                <form:label path="fromNode">
+                    <spring:message text="From"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="fromNode"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="toNode">
+                    <spring:message text="To"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="toNode"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit"
+                       value="<spring:message text="Find route"/>"/>
+            </td>
+        </tr>
     </table>
 </form:form>
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="_x35_k1_1_" x="0px" y="0px" viewBox="0 0 1710 720" style="enable-background:new 0 0 1710 720;" xml:space="preserve" inkscape:version="0.91 r13725" sodipodi:docname="map.svg"><metadata id="metadata739"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata><defs id="defs737"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="1017" id="namedview735" showgrid="false" inkscape:zoom="1.2570787" inkscape:cx="407.57716" inkscape:cy="332.65782" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="_x35_k1_1_"/><style type="text/css" id="style3">

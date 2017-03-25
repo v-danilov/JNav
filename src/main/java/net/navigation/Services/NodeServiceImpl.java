@@ -37,5 +37,5 @@ public class NodeServiceImpl implements NodeService {
 
     @Override
     @Transactional
-    public Node findNodeByNodeNumber(int node_number, int floor_id){return this.nodeDao.findNodeByNodeNumber(node_number,floor_id);}
+    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id){return this.nodeDao.findNodeByNodeNumber(node_number,floor_number,housing_id);};
 }

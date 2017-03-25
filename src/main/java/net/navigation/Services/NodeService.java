@@ -16,5 +16,5 @@ public interface NodeService {
 
     public Node findNodeById(int id);
 
-    public Node findNodeByNodeNumber(int node_number, int floor_id);
+    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id);
 }

@@ -40,7 +40,7 @@ public class ArcDaoImpl implements ArcDao {
     @Override
     public void removeArc(int id){
         Session session = this.sessionFactory.getCurrentSession();
-        Arc arc = session.load(Arc.class, new Integer(id));
+        Arc arc = (Arc) session.load(Arc.class, new Integer(id));
         if(arc!=null){
             session.delete(arc);
         }
@@ -50,7 +50,7 @@ public class ArcDaoImpl implements ArcDao {
     @Override
     public Arc findArcByID(int id){
         Session session =this.sessionFactory.getCurrentSession();
-        Arc arc = session.load(Arc.class, new Integer(id));
+        Arc arc = (Arc) session.load(Arc.class, new Integer(id));
         logger.info("Arc successfully loaded. Arc details: " + arc);
         return arc;
     }
@@ -73,7 +73,7 @@ public class ArcDaoImpl implements ArcDao {
     public List<Arc> listArcs(){
 
         Session session = this.sessionFactory.getCurrentSession();
-        List<Arc> arcList = session.createQuery("from Arc").list();
+        List<Arc> arcList = (List<Arc>) session.createQuery("from Arc").list();
 
         for(Arc arc: arcList){
             logger.info("Arc list: " + arc);

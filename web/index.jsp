@@ -13,6 +13,6 @@
     <title>Intro</title>
   </head>
   <body>
-  <h3><a href="<c:url value="/main.form"/>" target="_blank">Bonch map</a></h3>
+  <h3><a href="<c:url value="/main"/>" target="_blank">Bonch map</a></h3>
   </body>
 </html>
