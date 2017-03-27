@@ -4,6 +4,8 @@ package net.navigation.ExtClasses;
 import net.navigation.Models.Node;
 
 public class FormData {
+
+
     private String fromNode;
     private String toNode;
 

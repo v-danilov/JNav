@@ -1,5 +1,6 @@
 package net.navigation.DAO;
 
+import net.navigation.ExtClasses.Vertex;
 import net.navigation.Models.Node;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface NodeDao {
     public void removeNode(int id);
 
     public List<Node> listNodes();
+
+    public List<Integer> listSvgId(List<Vertex> vertexList);
 
     public Node findNodeById(int id);
 

@@ -27,6 +27,7 @@ public class MainController {
     private List<Edge> arcs; //Del
     DijkstraAlgorithm dijkstraAlgorithm;
 
+
     @Autowired(required = true)
     @Qualifier(value = "arcService")
     public void setArcService(ArcService arcService) {
@@ -58,7 +59,6 @@ public class MainController {
                 nodes.add(newVertex);
             }
 
-
             List<Arc> arcList = this.arcService.listArcs();
             int source_index = 0;
             int destination_index = 0;
@@ -89,9 +89,6 @@ public class MainController {
 
             graph = new Graph(nodes, arcs);
             dijkstraAlgorithm = new DijkstraAlgorithm(graph);
-
-
-            //Graph = this.arcService.createGraph();
             System.out.println("Graph created");
         } catch (Exception e) {
             System.err.println("Error. Build graph faild.\n" + e.getStackTrace() + "\nMessage: " + e.getMessage() + "\n");
@@ -102,42 +99,7 @@ public class MainController {
     @RequestMapping(value = "/main/find", method = RequestMethod.POST)
     public String findRoute(@ModelAttribute("formData") FormData formData) {
 
-        System.out.println("Trying to find route");
-        System.out.println("From: " + formData.getFromNode() + " | To: " + formData.getToNode());
-
-        String[] fromParse = formData.getFromNode().split("/");
-        int fromNodeNumber = Integer.parseInt(fromParse[0]);
-        int fromFloorId = Integer.parseInt(fromParse[0].substring(0,1));
-        int fromHousingId = Integer.parseInt(fromParse[1]);
-
-        String[] toParse = formData.getToNode().split("/");
-        int toNodeNumber = Integer.parseInt(toParse[0]);
-        int toFloorId = Integer.parseInt(toParse[0].substring(0,1));
-        int toHousingId = Integer.parseInt(toParse[1]);
-
-        Node fromNode = this.nodeService.findNodeByNodeNumber(fromNodeNumber,fromFloorId,fromHousingId);
-        Node toNode = this.nodeService.findNodeByNodeNumber(toNodeNumber,toFloorId,toHousingId);
-
-
-        int size = nodes.size();
-        int start_index = 0;
-        int end_index = 0;
-        for(int i = 0; i < size; i++){
-            if(Integer.parseInt(nodes.get(i).getId()) == fromNode.getId_node()){
-                start_index = i;
-            }
-            if(Integer.parseInt(nodes.get(i).getId()) == toNode.getId_node()){
-                end_index = i;
-            }
-        }
-        System.out.println("From: " + start_index + " | To: " + end_index);
-        dijkstraAlgorithm.execute(nodes.get(start_index));
-        LinkedList<Vertex> path = dijkstraAlgorithm.getPath(nodes.get(end_index));
-
-        for(Vertex v : path){
-            System.out.println(v);
-        }
-
+        List<Integer> svgHighlight = this.nodeService.buildRoute(formData.getFromNode(), formData.getToNode(), nodes, dijkstraAlgorithm);
 
         return "main";
     }

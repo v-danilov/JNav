@@ -1,5 +1,6 @@
 package net.navigation.DAO;
 
+import net.navigation.ExtClasses.Vertex;
 import net.navigation.Models.Node;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -78,6 +80,23 @@ public class NodeDaoImpl implements NodeDao {
         logger.info("Node successfully loaded. Node details: " + node);
 
         return node;
+    }
+
+    @Override
+    public List<Integer> listSvgId(List<Vertex> vertexList) {
+        List<Integer> idList = new ArrayList<Integer>();
+        for (Vertex v : vertexList) {
+            idList.add(Integer.parseInt(v.getId()));
+        }
+        Session session = this.sessionFactory.getCurrentSession();
+        List<Integer> svgIdList = session.createQuery("select n.svg_id from Node n where n.id_node in (:id)")
+                .setParameter("id", idList).list();
+
+        for (Integer i : svgIdList) {
+            logger.info("svgIdlist: " + i);
+        }
+
+        return svgIdList;
     }
 
 }
