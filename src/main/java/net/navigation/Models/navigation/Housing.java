@@ -1,4 +1,4 @@
-package net.navigation.Models;
+package net.navigation.Models.navigation;
 
 
 import javax.persistence.*;

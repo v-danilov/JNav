@@ -1,7 +1,8 @@
 package net.navigation.Controllers;
 
 import net.navigation.ExtClasses.*;
-import net.navigation.Models.*;
+import net.navigation.Models.navigation.Arc;
+import net.navigation.Models.navigation.Node;
 import net.navigation.Services.ArcService;
 import net.navigation.Services.NodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -22,10 +23,8 @@ public class MainController {
 
     private ArcService arcService;
     private NodeService nodeService;
-    private Graph graph;
-    private List<Vertex> nodes; //Del
-    private List<Edge> arcs; //Del
-    DijkstraAlgorithm dijkstraAlgorithm;
+    private List<Vertex> nodes;
+    private DijkstraAlgorithm dijkstraAlgorithm;
 
 
     @Autowired(required = true)
@@ -43,7 +42,6 @@ public class MainController {
     @RequestMapping(value = "main", method = RequestMethod.GET)
     public String enter(Model model){
         model.addAttribute("formData", new FormData());
-        //model.addAttribute("arc", new Arc());
         return "main";
     }
 
@@ -52,7 +50,7 @@ public class MainController {
         System.out.println("Build action started.");
         try {
             nodes = new ArrayList<Vertex>();
-            arcs = new ArrayList<Edge>();
+            List<Edge> arcs = new ArrayList<Edge>();
             List<Node> nodeList = this.nodeService.listNodes();
             for (Node n : nodeList) {
                 Vertex newVertex = new Vertex(Integer.toString(n.getId_node()), Integer.toString(n.getNode_number()));
@@ -83,11 +81,8 @@ public class MainController {
                 arcs.add(newEdge);
             }
 
-           /* for(Edge e : arcs){
-                System.out.println(e.getId() + " | " + e.getDestination() + " | " + e.getSource() + " | " + e.getWeight());
-            }*/
 
-            graph = new Graph(nodes, arcs);
+            Graph graph = new Graph(nodes, arcs);
             dijkstraAlgorithm = new DijkstraAlgorithm(graph);
             System.out.println("Graph created");
         } catch (Exception e) {
@@ -97,11 +92,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/main/find", method = RequestMethod.POST)
-    public String findRoute(@ModelAttribute("formData") FormData formData) {
+    public ModelAndView findRoute(@ModelAttribute("formData") FormData formData) {
 
+        //List with route ids
         List<Integer> svgHighlight = this.nodeService.buildRoute(formData.getFromNode(), formData.getToNode(), nodes, dijkstraAlgorithm);
 
-        return "main";
+        return new ModelAndView("main","output",svgHighlight.toString());
+        //return "main";
     }
 
 }

@@ -1,6 +1,6 @@
 package net.navigation.Services;
 
-import net.navigation.Models.Housing;
+import net.navigation.Models.navigation.Housing;
 
 import java.util.List;
 

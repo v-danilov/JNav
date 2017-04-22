@@ -2,7 +2,7 @@ package net.navigation.Services;
 
 import net.navigation.ExtClasses.DijkstraAlgorithm;
 import net.navigation.ExtClasses.Vertex;
-import net.navigation.Models.Node;
+import net.navigation.Models.navigation.Node;
 
 import java.util.List;
 

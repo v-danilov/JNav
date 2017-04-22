@@ -1,7 +1,7 @@
 package net.navigation.Services;
 
 import net.navigation.DAO.HousingDao;
-import net.navigation.Models.Housing;
+import net.navigation.Models.navigation.Housing;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

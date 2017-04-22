@@ -1,6 +1,6 @@
 package net.navigation.DAO;
 
-import net.navigation.Models.Floor;
+import net.navigation.Models.navigation.Floor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;

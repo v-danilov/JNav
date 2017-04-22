@@ -22,81 +22,82 @@
     <table id="14" parent="7" name="housing"/>
     <table id="15" parent="7" name="nodes"/>
     <table id="16" parent="7" name="nodes_types"/>
-    <column id="17" parent="10" name="id">
+    <table id="17" parent="7" name="users"/>
+    <column id="18" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="18" parent="10" name="book_title">
+    <column id="19" parent="10" name="book_title">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="10" name="book_author">
+    <column id="20" parent="10" name="book_author">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="10" name="book_price">
+    <column id="21" parent="10" name="book_price">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="21" parent="10" name="PRIMARY">
+    <key id="22" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="22" parent="11" name="idarc">
+    <column id="23" parent="11" name="idarc">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="23" parent="11" name="in">
+    <column id="24" parent="11" name="in">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="11" name="out">
+    <column id="25" parent="11" name="out">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="11" name="weight">
+    <column id="26" parent="11" name="weight">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="11" name="svgid">
+    <column id="27" parent="11" name="svgid">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="27" parent="11" name="timeMultiplier">
+    <column id="28" parent="11" name="timeMultiplier">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="28" parent="11" name="idarc_UNIQUE">
+    <index id="29" parent="11" name="idarc_UNIQUE">
       <ColNames>idarc</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="29" parent="11" name="inKey_idx">
+    <index id="30" parent="11" name="inKey_idx">
       <ColNames>in</ColNames>
     </index>
-    <index id="30" parent="11" name="nodeOutKey_idx">
+    <index id="31" parent="11" name="nodeOutKey_idx">
       <ColNames>out</ColNames>
     </index>
-    <key id="31" parent="11" name="PRIMARY">
+    <key id="32" parent="11" name="PRIMARY">
       <ColNames>idarc</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="32" parent="11" name="idarc_UNIQUE">
+    <key id="33" parent="11" name="idarc_UNIQUE">
       <ColNames>idarc</ColNames>
       <UnderlyingIndexName>idarc_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="33" parent="11" name="nodeInKey">
+    <foreign-key id="34" parent="11" name="nodeInKey">
       <ColNames>in</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>nodes</RefTableName>
@@ -104,7 +105,7 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="34" parent="11" name="nodeOutKey">
+    <foreign-key id="35" parent="11" name="nodeOutKey">
       <ColNames>out</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>nodes</RefTableName>
@@ -112,38 +113,38 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="35" parent="12" name="idfloor">
+    <column id="36" parent="12" name="idfloor">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="36" parent="12" name="floorNumber">
+    <column id="37" parent="12" name="floorNumber">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="37" parent="12" name="housingId">
+    <column id="38" parent="12" name="housingId">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="38" parent="12" name="housingKey_idx">
+    <index id="39" parent="12" name="housingKey_idx">
       <ColNames>housingId</ColNames>
     </index>
-    <index id="39" parent="12" name="idfloor_UNIQUE">
+    <index id="40" parent="12" name="idfloor_UNIQUE">
       <ColNames>idfloor</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="40" parent="12" name="PRIMARY">
+    <key id="41" parent="12" name="PRIMARY">
       <ColNames>idfloor</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="41" parent="12" name="idfloor_UNIQUE">
+    <key id="42" parent="12" name="idfloor_UNIQUE">
       <ColNames>idfloor</ColNames>
       <UnderlyingIndexName>idfloor_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="42" parent="12" name="housingKey">
+    <foreign-key id="43" parent="12" name="housingKey">
       <ColNames>housingId</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>housing</RefTableName>
@@ -151,45 +152,45 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="43" parent="13" name="idfloorTransition">
+    <column id="44" parent="13" name="idfloorTransition">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="44" parent="13" name="from">
+    <column id="45" parent="13" name="from">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="13" name="to">
+    <column id="46" parent="13" name="to">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="46" parent="13" name="desc">
+    <column id="47" parent="13" name="desc">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <index id="47" parent="13" name="floorFromKey_idx">
+    <index id="48" parent="13" name="floorFromKey_idx">
       <ColNames>from</ColNames>
     </index>
-    <index id="48" parent="13" name="floorToKey_idx">
+    <index id="49" parent="13" name="floorToKey_idx">
       <ColNames>to</ColNames>
     </index>
-    <index id="49" parent="13" name="idfloorTransition_UNIQUE">
+    <index id="50" parent="13" name="idfloorTransition_UNIQUE">
       <ColNames>idfloorTransition</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="50" parent="13" name="PRIMARY">
+    <key id="51" parent="13" name="PRIMARY">
       <ColNames>idfloorTransition</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="51" parent="13" name="idfloorTransition_UNIQUE">
+    <key id="52" parent="13" name="idfloorTransition_UNIQUE">
       <ColNames>idfloorTransition</ColNames>
       <UnderlyingIndexName>idfloorTransition_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="52" parent="13" name="transitKey">
+    <foreign-key id="53" parent="13" name="transitKey">
       <ColNames>idfloorTransition</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>nodes</RefTableName>
@@ -197,7 +198,7 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="53" parent="13" name="floorFromKey">
+    <foreign-key id="54" parent="13" name="floorFromKey">
       <ColNames>from</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>floors</RefTableName>
@@ -205,7 +206,7 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="54" parent="13" name="floorToKey">
+    <foreign-key id="55" parent="13" name="floorToKey">
       <ColNames>to</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>floors</RefTableName>
@@ -213,75 +214,77 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="55" parent="14" name="idhousing">
+    <column id="56" parent="14" name="idhousing">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="14" name="desc">
+    <column id="57" parent="14" name="desc">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <index id="57" parent="14" name="idhousing_UNIQUE">
+    <index id="58" parent="14" name="idhousing_UNIQUE">
       <ColNames>idhousing</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="58" parent="14" name="PRIMARY">
+    <key id="59" parent="14" name="PRIMARY">
       <ColNames>idhousing</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="59" parent="14" name="idhousing_UNIQUE">
+    <key id="60" parent="14" name="idhousing_UNIQUE">
       <ColNames>idhousing</ColNames>
       <UnderlyingIndexName>idhousing_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="60" parent="15" name="idnode">
+    <column id="61" parent="15" name="idnode">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="61" parent="15" name="nodeNumber">
+    <column id="62" parent="15" name="nodeNumber">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="62" parent="15" name="floorId">
+    <column id="63" parent="15" name="floorId">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="63" parent="15" name="type">
+    <column id="64" parent="15" name="type">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="64" parent="15" name="svgid">
+    <column id="65" parent="15" name="svgid">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="65" parent="15" name="desc">
+    <column id="66" parent="15" name="desc">
       <Position>6</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <index id="66" parent="15" name="floorNumKey_idx">
+    <index id="67" parent="15" name="floorNumKey_idx">
       <ColNames>floorId</ColNames>
     </index>
-    <index id="67" parent="15" name="idroom_UNIQUE">
+    <index id="68" parent="15" name="idroom_UNIQUE">
       <ColNames>idnode</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="68" parent="15" name="typeKey_idx">
+    <index id="69" parent="15" name="typeKey_idx">
       <ColNames>type</ColNames>
     </index>
-    <key id="69" parent="15" name="PRIMARY">
+    <key id="70" parent="15" name="PRIMARY">
       <ColNames>idnode</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="70" parent="15" name="idroom_UNIQUE">
+    <key id="71" parent="15" name="idroom_UNIQUE">
       <ColNames>idnode</ColNames>
       <UnderlyingIndexName>idroom_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="71" parent="15" name="floorNumKey">
+    <foreign-key id="72" parent="15" name="floorNumKey">
       <ColNames>floorId</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>floors</RefTableName>
@@ -289,7 +292,7 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="72" parent="15" name="typeKey">
+    <foreign-key id="73" parent="15" name="typeKey">
       <ColNames>type</ColNames>
       <RefSchemaName>navigation</RefSchemaName>
       <RefTableName>nodes_types</RefTableName>
@@ -297,26 +300,50 @@
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="73" parent="16" name="idtype">
+    <column id="74" parent="16" name="idtype">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="74" parent="16" name="desc">
+    <column id="75" parent="16" name="desc">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <index id="75" parent="16" name="idtype_UNIQUE">
+    <index id="76" parent="16" name="idtype_UNIQUE">
       <ColNames>idtype</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="76" parent="16" name="PRIMARY">
+    <key id="77" parent="16" name="PRIMARY">
       <ColNames>idtype</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="77" parent="16" name="idtype_UNIQUE">
+    <key id="78" parent="16" name="idtype_UNIQUE">
       <ColNames>idtype</ColNames>
       <UnderlyingIndexName>idtype_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="79" parent="17" name="iduser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="80" parent="17" name="login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="17" name="password">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="17" name="name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="83" parent="17" name="PRIMARY">
+      <ColNames>iduser</ColNames>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>

@@ -1,7 +1,7 @@
 package net.navigation.Services;
 
 import net.navigation.DAO.FloorDao;
-import net.navigation.Models.Floor;
+import net.navigation.Models.navigation.Floor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

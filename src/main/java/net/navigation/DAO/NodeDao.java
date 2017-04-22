@@ -1,7 +1,7 @@
 package net.navigation.DAO;
 
 import net.navigation.ExtClasses.Vertex;
-import net.navigation.Models.Node;
+import net.navigation.Models.navigation.Node;
 
 import java.util.List;
 

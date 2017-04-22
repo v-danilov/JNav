@@ -1,6 +1,6 @@
 package net.navigation.DAO;
 
-import net.navigation.Models.Arc;
+import net.navigation.Models.navigation.Arc;
 
 import java.util.List;
 

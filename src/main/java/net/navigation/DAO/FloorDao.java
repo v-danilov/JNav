@@ -1,6 +1,6 @@
 package net.navigation.DAO;
 
-import net.navigation.Models.Floor;
+import net.navigation.Models.navigation.Floor;
 
 import java.util.List;
 

@@ -5,6 +5,7 @@ import net.navigation.DAO.ArcDao;
 import net.navigation.DAO.NodeDao;
 import net.navigation.DAO.NodeDaoImpl;
 import net.navigation.Models.*;
+import net.navigation.Models.navigation.Arc;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
 package net.navigation.DAO;
 
 import net.navigation.ExtClasses.Vertex;
-import net.navigation.Models.Node;
+import net.navigation.Models.navigation.Node;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -89,14 +89,16 @@ public class NodeDaoImpl implements NodeDao {
             idList.add(Integer.parseInt(v.getId()));
         }
         Session session = this.sessionFactory.getCurrentSession();
-        List<Integer> svgIdList = session.createQuery("select n.svg_id from Node n where n.id_node in (:id)")
-                .setParameter("id", idList).list();
+        List<Integer> svgIdList = session.createQuery("select DISTINCT n.svg_id from Node n where n.id_node in (:id)")
+                .setParameterList("id", idList).list();
 
         for (Integer i : svgIdList) {
+            System.out.println(i);
             logger.info("svgIdlist: " + i);
         }
-
         return svgIdList;
     }
 
 }
+
+

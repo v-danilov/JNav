@@ -1,8 +1,6 @@
 package net.navigation.DAO;
 
-import net.navigation.Models.Arc;
-import net.navigation.Models.Node;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import net.navigation.Models.navigation.Arc;
 
 import org.hibernate.*;
 

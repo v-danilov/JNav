@@ -1,6 +1,6 @@
 package net.navigation.Services;
 
-import net.navigation.Models.Floor;
+import net.navigation.Models.navigation.Floor;
 
 import java.util.List;
 
