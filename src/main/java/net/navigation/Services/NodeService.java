@@ -20,7 +20,7 @@ public interface NodeService {
 
     public Node findNodeById(int id);
 
-    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id);
+    public Node findNodeByNodeNumber(String node_number, int floor_number, int housing_id);
 
     public List<Integer> buildRoute(String from, String to, List<Vertex> nodes, DijkstraAlgorithm dijkstraAlgorithm);
 }

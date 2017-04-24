@@ -40,7 +40,7 @@ public class NodeServiceImpl implements NodeService {
 
     @Override
     @Transactional
-    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id) {
+    public Node findNodeByNodeNumber(String node_number, int floor_number, int housing_id) {
         return this.nodeDao.findNodeByNodeNumber(node_number, floor_number, housing_id);
     }
 
@@ -57,12 +57,12 @@ public class NodeServiceImpl implements NodeService {
         System.out.println("From: " + from + " | To: " + to);
 
         String[] fromParse = from.split("/");
-        int fromNodeNumber = Integer.parseInt(fromParse[0]);
+        String fromNodeNumber = fromParse[0];
         int fromFloorId = Integer.parseInt(fromParse[0].substring(0, 1));
         int fromHousingId = Integer.parseInt(fromParse[1]);
 
         String[] toParse = to.split("/");
-        int toNodeNumber = Integer.parseInt(toParse[0]);
+        String toNodeNumber = toParse[0];
         int toFloorId = Integer.parseInt(toParse[0].substring(0, 1));
         int toHousingId = Integer.parseInt(toParse[1]);
 

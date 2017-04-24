@@ -66,7 +66,7 @@ public class NodeDaoImpl implements NodeDao {
     }
 
     @Override
-    public Node findNodeByNodeNumber(int node_number, int floor_number, int housing_id){
+    public Node findNodeByNodeNumber(String node_number, int floor_number, int housing_id){
         Session session =this.sessionFactory.getCurrentSession();
 
         List<Node> result = session.createQuery("from Node n where n.node_number=:node_number and n.floor_id = (select id_floor from Floor where floor_number = :floor_number and housing_id = :housing_id)")

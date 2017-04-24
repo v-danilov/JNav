@@ -53,7 +53,7 @@ public class MainController {
             List<Edge> arcs = new ArrayList<Edge>();
             List<Node> nodeList = this.nodeService.listNodes();
             for (Node n : nodeList) {
-                Vertex newVertex = new Vertex(Integer.toString(n.getId_node()), Integer.toString(n.getNode_number()));
+                Vertex newVertex = new Vertex(Integer.toString(n.getId_node()), n.getNode_number());
                 nodes.add(newVertex);
             }
 

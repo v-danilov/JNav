@@ -3,6 +3,7 @@ package net.navigation.Controllers;
 import net.navigation.ExtClasses.Circle;
 import net.navigation.ExtClasses.FormData;
 import net.navigation.Models.authorization.User;
+import net.navigation.Models.navigation.Node;
 import net.navigation.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -47,6 +48,7 @@ public class AuthorizationController {
         fd.setDirectory("C:\\");
         fd.setFile("*.svg");
         fd.setVisible(true);
+        fd.toFront();
         String filename = fd.getDirectory() + fd.getFile();
         System.out.println(filename);
 
@@ -115,6 +117,8 @@ public class AuthorizationController {
 
 
             for (Circle cir : circles) {
+                Node node = new Node();
+                node.
                 System.out.println(cir);
                 /*List<String> roomsList = cir.getRooms();
                 int size = roomsList.size();

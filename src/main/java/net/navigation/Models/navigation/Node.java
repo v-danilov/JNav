@@ -14,7 +14,7 @@ public class Node {
     private int id_node;
 
     @Column(name = "NODENUMBER")
-    private int node_number;
+    private String node_number;
 
     @Column(name = "FLOORID" )
     private int floor_id;
@@ -38,11 +38,11 @@ public class Node {
         this.id_node = id_node;
     }
 
-    public int getNode_number() {
+    public String getNode_number() {
         return node_number;
     }
 
-    public void setNode_number(int node_number) {
+    public void setNode_number(String node_number) {
         this.node_number = node_number;
     }
 
