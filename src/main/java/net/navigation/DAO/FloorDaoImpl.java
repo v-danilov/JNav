@@ -42,6 +42,14 @@ public class FloorDaoImpl implements FloorDao {
     }
 
     @Override
+    public int findFloorId(int floor_number, int housing_id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Integer floor = (Integer) session.createQuery("select Floor.id_floor from Floor where floor_number=:f_num and housing_id=:h_id")
+                .setParameter("f_num", floor_number)
+                .setParameter("h_id", housing_id).uniqueResult();
+        return floor.intValue();
+    }
+    @Override
     public List<Floor> listFloors(){
 
         Session session = this.sessionFactory.getCurrentSession();

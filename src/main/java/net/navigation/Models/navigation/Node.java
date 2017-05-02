@@ -19,7 +19,6 @@ public class Node {
     @Column(name = "FLOORID" )
     private int floor_id;
 
-
     @Column(name = "TYPE" )
     private int type;
 

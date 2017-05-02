@@ -20,6 +20,14 @@ public class FloorServiceImpl implements FloorService {
 
     @Override
     @Transactional
+    public int findFloorId(int floor_number, int housing_id) {
+        return this.floorDao.findFloorId(floor_number, housing_id);
+    }
+
+    ;
+
+    @Override
+    @Transactional
     public void updateFloor(Floor floor){this.floorDao.updateFloor(floor);};
 
     @Override

@@ -4,6 +4,8 @@ import net.navigation.ExtClasses.Circle;
 import net.navigation.ExtClasses.FormData;
 import net.navigation.Models.authorization.User;
 import net.navigation.Models.navigation.Node;
+import net.navigation.Services.FloorService;
+import net.navigation.Services.NodeService;
 import net.navigation.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,22 +17,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.awt.*;
-import java.awt.List;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
+import java.util.List;
 
 @Controller
 public class AuthorizationController {
 
     private UserService userService;
+    private NodeService nodeService;
+    private FloorService floorService;
 
     @Autowired(required = true)
     @Qualifier(value = "userService")
-    public void setArcService(UserService userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired(required = true)
+    @Qualifier(value = "nodeService")
+    public void setNodeService(NodeService nodeService) {
+        this.nodeService = nodeService;
+    }
+
+    @Autowired(required = true)
+    @Qualifier(value = "floorService")
+    public void setFloorService(FloorService floorService) {
+        this.floorService = floorService;
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
@@ -47,6 +60,7 @@ public class AuthorizationController {
         FileDialog fd = new FileDialog(new Frame(), "Choose a file", FileDialog.LOAD);
         fd.setDirectory("C:\\");
         fd.setFile("*.svg");
+        fd.toFront();
         fd.setVisible(true);
         fd.toFront();
         String filename = fd.getDirectory() + fd.getFile();
@@ -117,8 +131,45 @@ public class AuthorizationController {
 
 
             for (Circle cir : circles) {
-                Node node = new Node();
-                node.
+
+                List<String> auditories = cir.getRooms();
+
+                String c_id = cir.getId();
+                int housing = Integer.parseInt(c_id.charAt(0) + "");
+                int floor = Integer.parseInt(c_id.charAt(1) + "");
+                int f_id = floorService.findFloorId(floor, housing);
+
+                for (String aud : auditories) {
+                    if (Character.isDigit(aud.charAt(0))) {
+                        Node addNode = new Node();
+                        addNode.setNode_number(aud);
+                        addNode.setFloor_id(f_id);
+                        addNode.setSvg_id(Integer.parseInt(cir.getId()));
+                        addNode.setType(0);
+                        System.out.println(addNode.toString());
+                    } else {
+                        if (aud.startsWith("t")) {
+                            Node addNode = new Node();
+                            addNode.setNode_number(aud);
+                            addNode.setSvg_id(Integer.parseInt(cir.getId()));
+                            addNode.setType(1);
+                            addNode.setDesc("Toilet");
+                            addNode.setFloor_id(f_id);
+                            System.out.println(addNode.toString());
+                        }
+                        if (aud.startsWith("s") || aud.startsWith("l")) {
+                            Node addNode = new Node();
+                            addNode.setNode_number(aud);
+                            addNode.setSvg_id(Integer.parseInt(cir.getId()));
+                            addNode.setType(3);
+                            addNode.setDesc("Transition");
+                            addNode.setFloor_id(f_id);
+                            System.out.println(addNode.toString());
+                        }
+                    }
+
+                }
+
                 System.out.println(cir);
                 /*List<String> roomsList = cir.getRooms();
                 int size = roomsList.size();
