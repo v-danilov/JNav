@@ -12,11 +12,11 @@ public class Arc {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id_arc;
 
-    @Column(name = "IN")
-    private int end_node;
-
-    @Column(name = "OUT")
+    @Column(name = "START")
     private int start_node;
+
+    @Column(name = "END")
+    private int end_node;
 
     @Column(name = "WEIGHT")
     private int weight;
@@ -26,6 +26,22 @@ public class Arc {
 
     @Column(name = "SVGID")
     private int svg_id;
+
+    public Arc(int start_node, int end_node, int weight, int time_multiplier, int svg_id) {
+        this.start_node = start_node;
+        this.end_node = end_node;
+        this.weight = weight;
+        this.time_multiplier = time_multiplier;
+        this.svg_id = svg_id;
+    }
+
+    public Arc(){
+        this.end_node = 0;
+        this.start_node = 0;
+        this.weight = 0;
+        this.time_multiplier = 0;
+        this.svg_id = 0;
+    };
 
     public int getId_arc() {
         return id_arc;

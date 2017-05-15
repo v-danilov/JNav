@@ -24,14 +24,14 @@ public class NodeDaoImpl implements NodeDao {
     public void addNode(Node node){
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(node);
-        logger.info("Node successfully saved. Node details: " + node);
+        logger.info("Node successfully saved. Node details: " + node.toString());
     }
 
     @Override
     public void updateNode(Node node){
         Session session = this.sessionFactory.getCurrentSession();
         session.update(node);
-        logger.info("Node successfully update. Node details: " + node);
+        logger.info("Node successfully update. Node details: " + node.toString());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class NodeDaoImpl implements NodeDao {
         if(node!=null){
             session.delete(node);
         }
-        logger.info("Node successfully removed. Node details: " + node);
+        logger.info("Node successfully removed. Node details: " + node.toString());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class NodeDaoImpl implements NodeDao {
         List<Node> nodeList =(List<Node>) session.createQuery("from Node ").list();
 
         for(Node node: nodeList){
-            logger.info("Node list: " + node);
+            logger.info("Node list: " + node.toString());
         }
 
         return nodeList;
@@ -61,7 +61,7 @@ public class NodeDaoImpl implements NodeDao {
     public Node findNodeById(int id){
         Session session =this.sessionFactory.getCurrentSession();
         Node node = (Node) session.load(Node.class, new Integer(id));
-        logger.info("Node successfully loaded. Node details: " + node);
+        logger.info("Node successfully loaded. Node details: " + node.toString());
         return node;
     }
 
@@ -77,7 +77,7 @@ public class NodeDaoImpl implements NodeDao {
         if(result.size() > 1){
             logger.info("Warning! To many values: " + result.size());
         }
-        logger.info("Node successfully loaded. Node details: " + node);
+        logger.info("Node successfully loaded. Node details: " + node.toString());
 
         return node;
     }

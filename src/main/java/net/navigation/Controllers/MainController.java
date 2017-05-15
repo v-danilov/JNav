@@ -64,16 +64,9 @@ public class MainController {
             for (Arc a : arcList) {
 
                 //Ищем положение Node в листе в соответсвии с данными дуги
-                int size = nodes.size();
-                for (int i = 0; i < size; i++) {
-                    if (Integer.parseInt(nodes.get(i).getId())==(a.getStart_node())) {
-                        source_index = i;
-                    }
-                    if (Integer.parseInt(nodes.get(i).getId())==(a.getEnd_node())) {
-                        destination_index = i;
-                    }
+                source_index = nodes.indexOf(new Vertex(a.getStart_node() + "",null));
+                destination_index = nodes.indexOf(new Vertex(a.getEnd_node() + "",null));
 
-                }
 
                 Edge newEdge = new Edge(Integer.toString(a.getId_arc()),nodes.get(destination_index), nodes.get(source_index), a.getWeight());
                 arcs.add(newEdge);

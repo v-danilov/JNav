@@ -19,14 +19,14 @@ public class Node {
     @Column(name = "FLOORID" )
     private int floor_id;
 
-    @Column(name = "TYPE" )
+    @Column(name = "NODETYPE" )
     private int type;
 
     @Column(name = "SVGID" )
     private int svg_id;
 
 
-    @Column(name = "DESC" )
+    @Column(name = "DESCRIPTION" )
     private String desc;
 
     public int getId_node() {
@@ -77,7 +77,20 @@ public class Node {
         this.desc = desc;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Node node = (Node) o;
+
+        return id_node == node.id_node;
+    }
+
+    @Override
+    public int hashCode() {
+        return id_node;
+    }
 
     @Override
     public String toString() {

@@ -41,6 +41,7 @@ public class NodeServiceImpl implements NodeService {
     @Override
     @Transactional
     public Node findNodeByNodeNumber(String node_number, int floor_number, int housing_id) {
+        //System.out.println(node_number + " | " + floor_number + " | " + housing_id);
         return this.nodeDao.findNodeByNodeNumber(node_number, floor_number, housing_id);
     }
 
@@ -56,15 +57,21 @@ public class NodeServiceImpl implements NodeService {
         System.out.println("Trying to find route");
         System.out.println("From: " + from + " | To: " + to);
 
-        String[] fromParse = from.split("/");
-        String fromNodeNumber = fromParse[0];
-        int fromFloorId = Integer.parseInt(fromParse[0].substring(0, 1));
-        int fromHousingId = Integer.parseInt(fromParse[1]);
+        int split_index = from.lastIndexOf("/");
+        int fromHousingId = Integer.parseInt(from.substring(split_index + 1));
+        String fromNodeNumber = from.substring(0,split_index);
+        int fromFloorId = Integer.parseInt(fromNodeNumber.substring(0, 1));
 
-        String[] toParse = to.split("/");
+
+        split_index = to.lastIndexOf("/");
+        int toHousingId = Integer.parseInt(to.substring(split_index + 1));
+        String toNodeNumber = to.substring(0,split_index);
+        int toFloorId = Integer.parseInt(toNodeNumber.substring(0, 1));
+
+        /*String[] toParse = to.split("/");
         String toNodeNumber = toParse[0];
         int toFloorId = Integer.parseInt(toParse[0].substring(0, 1));
-        int toHousingId = Integer.parseInt(toParse[1]);
+        int toHousingId = Integer.parseInt(toParse[1]);*/
 
         Node fromNode = this.nodeDao.findNodeByNodeNumber(fromNodeNumber, fromFloorId, fromHousingId);
         Node toNode = this.nodeDao.findNodeByNodeNumber(toNodeNumber, toFloorId, toHousingId);
